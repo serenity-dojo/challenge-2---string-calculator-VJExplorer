@@ -51,4 +51,9 @@ public class WhenDoingMaths {
     public void shouldDivideNumbers() {
         assertThat(calculator.evaluate("15 / 5")).isEqualTo(3);
     }
+
+    @Test(expected = IllegalMathsOperatorException.class)
+    public void shouldReportDivisionByZero() {
+        calculator.evaluate("10 / 0");
+    }
 }

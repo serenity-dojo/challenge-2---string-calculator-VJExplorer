@@ -47,7 +47,11 @@ public class Calculator {
                 }else if(operator.equals("*")){
                     resultValue = numbers.get(0) *numbers.get(1);
                 }else if(operator.equals("/")){
-                    resultValue = numbers.get(0) /numbers.get(1);
+                    if(numbers.get(1)!=0) {
+                        resultValue = numbers.get(0) / numbers.get(1);
+                    }else{
+                        throw new IllegalMathsOperatorException("Division by zero");
+                    }
                 }else{
                     throw new IllegalMathsOperatorException("Invalid math operator" +operator);
                 }
