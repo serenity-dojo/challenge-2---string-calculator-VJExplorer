@@ -38,23 +38,26 @@ public class Calculator {
                 operator  = val;
             }
             i++;
-            if (numbers.size()==2 && !operator.isEmpty()){
-                int resultValue =0 ;
-                if (operator.equals("+")){
-                    resultValue = numbers.get(0) + numbers.get(1);
-                }else if (operator.equals("-")){
-                    resultValue = numbers.get(0) -numbers.get(1);
-                }else if(operator.equals("*")){
-                    resultValue = numbers.get(0) *numbers.get(1);
-                }else if(operator.equals("/")){
-                    if(numbers.get(1)!=0) {
+            if (numbers.size()==2 && !operator.isEmpty()) {
+                int resultValue = 0;
+
+                switch (operator) {
+                    case "+":
+                        resultValue = numbers.get(0) + numbers.get(1);
+                        break;
+                    case "-":
+                        resultValue = numbers.get(0) - numbers.get(1);
+                        break;
+                    case "*":
+                        resultValue = numbers.get(0) * numbers.get(1);
+                        break;
+                    case "/":
                         resultValue = numbers.get(0) / numbers.get(1);
-                    }else{
-                        throw new IllegalMathsOperatorException("Division by zero");
-                    }
-                }else{
-                    throw new IllegalMathsOperatorException("Invalid math operator" +operator);
+                        break;
+                    default:
+                        throw new IllegalMathsOperatorException("Invalid math operator" + operator);
                 }
+
                 numbers.removeAll(numbers);
                 numbers.add(resultValue);
                 operator ="";
